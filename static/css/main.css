@@ -1,0 +1,48 @@
+body, html {
+    margin: 30px;
+    font-family: sans-serif;
+}
+
+table, td, th {
+    border: 1px solid #aaa;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    height: 30px;
+}
+
+td {
+    text-align: left;
+    padding: 5px;
+}
+
+td[scope="index"] {
+    text-align: right;
+    padding-right: 10px;
+    width: 80px;
+}
+
+td[scope="price"] {
+    text-align: right;
+    padding-right: 10px;
+    width: 80px;
+}
+
+td[scope="loading"] {
+    color: #a0a0a0
+}
+
+select {
+    padding: 5px;
+    margin: 10px;
+    font-size: medium;
+}
+
+option {
+    padding: 5px;
+}

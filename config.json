@@ -1,0 +1,16 @@
+{
+  "request_timeout": 20,
+  "api_url": "https://bad-api-assignment.reaktor.com/",
+  "category_endpoint": "/v2/products/",
+  "manufacturer_endpoint": "/v2/availability/",
+  "categories": [
+    "gloves",
+    "facemasks",
+    "beanies"
+  ],
+  "offline_mode_active": false,
+  "store_last_results": false,
+  "max_items_db_call": 300,
+  "update_interval": 300,
+  "api_call_delay_on_failure": 1
+}
