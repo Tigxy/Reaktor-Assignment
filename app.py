@@ -17,11 +17,8 @@ class Form(FlaskForm):
 
 app = Flask(__name__)
 
-# for CSRF protection, not necessary in our use-case
+# secret for CSRF protection, not necessary in our use-case
 app.config['SECRET_KEY'] = 'secret'
-
-# TODO: Remove when done debugging (prevents caching of .html and .css files)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 CORS(app)
 
 data_loaded = False
@@ -49,15 +46,20 @@ def index():
     else:
         selected_category = config_dict["categories"][0]
 
+    # Get a new session
     session = data_manager.Session()
 
+    # Select products to display
     products = session \
         .query(Product) \
         .filter(Product.category == selected_category) \
         .order_by(Product.name) \
         .all()
 
+    # Cleanup products to make them presentable
     products = [pretty_product_dict(product) for product in products]
+
+    # Close session
     data_manager.Session.remove()
 
     return render_template('index.html',

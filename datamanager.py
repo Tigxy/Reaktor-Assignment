@@ -8,7 +8,7 @@ import logging
 import threading
 
 import sqlalchemy
-from sqlalchemy import Column, String, Integer, create_engine, DateTime
+from sqlalchemy import Column, String, Integer, create_engine
 from sqlalchemy.sql import case
 from sqlalchemy.orm import declarative_base, sessionmaker, scoped_session
 from sqlalchemy.pool import StaticPool
