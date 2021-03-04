@@ -62,8 +62,6 @@ def dict_to_product(category, data_dict):
 
 
 def generate_product_db():
-    # Need to use a file based database as we want to access the data from multiple threads
-    engine = create_engine("sqlite:///products.db",
                            connect_args={'check_same_thread': False},
                            # StaticPool required for memory databases
                            # see https://stackoverflow.com/a/61085725
@@ -97,7 +95,7 @@ class DataManager:
 
     def start(self):
         if not self.is_running:
-            self.__t = threading.Thread(target=self.run)
+            self.__t = threading.Thread(target=self.run, daemon=True)
             self.__t.start()
 
     def run(self):
