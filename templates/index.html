@@ -15,7 +15,6 @@
         <input type="submit" value="select or update">
     </form>
 
-    {% if is_data_available %}
     <table>
         <tr>
             <th>Nr</th>
@@ -40,9 +39,5 @@
         </tr>
         {% endfor %}
     </table>
-    {% else %}
-    <h2>Loading data in progress...</h2>
-    Please be patient, this may take up to 5 minutes.
-    {% endif %}
 </div>
 {% endblock %}

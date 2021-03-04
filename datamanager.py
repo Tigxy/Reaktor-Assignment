@@ -2,7 +2,6 @@ from config import config_dict
 from enums import UpdateResult
 from utils import Availability, get_category, get_manufacturer, split_sized_chunks
 
-import os
 import sys
 import time
 import logging

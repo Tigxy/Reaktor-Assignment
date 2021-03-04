@@ -24,13 +24,24 @@ app.config['SECRET_KEY'] = 'secret'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 CORS(app)
 
+data_loaded = False
 
-data_manager = DataManager(config_dict["update_interval"])
+
+def db_changed():
+    global data_loaded
+    data_loaded = True
+
+
+data_manager = DataManager(config_dict["update_interval"], change_callback=db_changed)
 data_manager.start()
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+
+    global data_loaded
+    if not data_loaded:
+        return render_template('loading.html')
 
     form = Form()
     if request.method == "POST":
@@ -53,8 +64,7 @@ def index():
                            form=form,
                            products=products,
                            categories=config_dict["categories"],
-                           selected_category=selected_category,
-                           is_data_available=len(products) > 0)
+                           selected_category=selected_category)
 
 
 if __name__ == "__main__":
