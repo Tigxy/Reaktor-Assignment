@@ -62,6 +62,8 @@ def dict_to_product(category, data_dict):
 
 
 def generate_product_db():
+    # Use in-memory database
+    engine = create_engine("sqlite://",
                            connect_args={'check_same_thread': False},
                            # StaticPool required for memory databases
                            # see https://stackoverflow.com/a/61085725

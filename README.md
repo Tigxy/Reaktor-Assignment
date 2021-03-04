@@ -14,7 +14,7 @@ This is my implementation for the Reaktor Summer Junior Developer Assignment 202
 
 ### About my implementation
 
-It uses the Flask as web framework to display the products to the user. For keeping the data up to date, a separate thread that periodically updates the database with data retrieved from the APIs is used. As sharing an in-memory database across threads raises some problems, I have opted for using a SQLite database file that resides in the same directory. The benefits of using a database will be clear once one introduces features such as ordering or searching through the products. Note: For in production use, one might opt for other databases instead.
+It uses the Flask as web framework to display the products to the user. For keeping the data up to date, a separate thread that periodically updates the database with data retrieved from the APIs is used. The benefits of using a database will be clear once one introduces features such as ordering or searching through the products. Note: For in production use, one might opt for other database solutions instead, which handle paralell access differently.
 
 
 ### Possible improvements
