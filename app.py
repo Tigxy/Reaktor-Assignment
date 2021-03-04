@@ -15,12 +15,9 @@ class Form(FlaskForm):
     category = SelectField("category", choices=[(cat, cat) for cat in config_dict["categories"]])
 
 
+# Setup flask app
 app = Flask(__name__)
-
-# secret for CSRF protection, not necessary in our use-case
-app.config['SECRET_KEY'] = 'secret'
 CORS(app)
-
 data_loaded = False
 
 
@@ -38,9 +35,10 @@ def index():
 
     global data_loaded
     if not data_loaded:
+        # Show loading page in case data was not loaded at least once after startup
         return render_template('loading.html')
 
-    form = Form()
+    form = Form(meta={"csrf": False})
     if request.method == "POST":
         selected_category = form.category.data
     else:
